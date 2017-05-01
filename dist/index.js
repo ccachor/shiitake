@@ -143,11 +143,13 @@ var Shiitake = function (_React$Component) {
     key: '_setChildren',
     value: function _setChildren() {
       var children = this.props.children;
+      var dots = this.props.dots || '...';
 
       // are we actually trimming?
       if (this.state.testChildren.length < this.props.children.length) {
-        children = this.state.testChildren.slice(0, -3).split(' ').slice(0, -1);
-        children = children.join(' ') + '...';
+        var cut = -dots.length;
+        children = this.state.testChildren.slice(0, cut).split(' ').slice(0, -1);
+        children = children.join(' ') + dots;
       }
       this._handlingResize = false;
       this.setState({ children: children, lastCalculatedWidth: this.spreader.offsetWidth });
